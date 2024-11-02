@@ -1,20 +1,30 @@
-const axios = require('axios');
+const { Builder } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 
 // URL to visit
 const url = 'https://github.com/yashksaini-coder'; // Replace with your desired URL
 
-async function visitPage() {
+(async function visitPage() {
+    // Set up Chrome options for fast execution
+    let options = new chrome.Options();
+    options.addArguments('--headless'); // Run in headless mode
+    options.addArguments('--disable-infobars');
+    options.addArguments('--disable-extensions');
+    options.addArguments('--no-sandbox');
+    options.addArguments('--disable-gpu');
+    options.addArguments('--disable-dev-shm-usage');
+
+    // Initialize WebDriver
+    let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
+
     try {
-        // Send the request 1000 times
+        // Visit the URL 1000 times
         for (let i = 0; i < 1000; i++) {
             console.log(`Visit ${i + 1} to ${url}`);
-            await axios.get(url); // Send GET request
+            await driver.get(url);
         }
-        console.log('Completed 1000 visits');
-    } catch (error) {
-        console.error(`Error visiting page: ${error.message}`);
+    } finally {
+        // Close the browser after completion
+        await driver.quit();
     }
-}
-
-// Execute the function
-visitPage();
+})();

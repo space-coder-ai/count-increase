@@ -22,4 +22,4 @@ jobs:
         run: npm install 
 
       - name: Run the visit script
-        run: node visit.js  # Replace with the actual path if necessary
+        run: node scripts/visit.js  # Replace with the actual path if necessary

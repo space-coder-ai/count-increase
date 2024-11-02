@@ -1,0 +1,14 @@
+{
+    "name": "selenium-visit-script",
+    "version": "1.0.0",
+    "description": "A script to visit a URL using Selenium WebDriver",
+    "main": "visit.js",
+    "scripts": {
+      "start": "node visit.js"
+    },
+    "dependencies": {
+      "selenium-webdriver": "^4.0.0"
+    },
+    "author": "Your Name",
+    "license": "MIT"
+  }

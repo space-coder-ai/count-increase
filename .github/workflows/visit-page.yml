@@ -1,0 +1,25 @@
+name: Visit Page Daily
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs once daily at midnight UTC
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+jobs:
+  visit_page_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Ensure Node.js version is compatible
+
+      - name: Install dependencies
+        run: npm install axios
+
+      - name: Run the visit script
+        run: node visitPage.js  # Replace with the actual path if necessary

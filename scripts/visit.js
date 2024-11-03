@@ -2,7 +2,7 @@ const { Builder } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 
 // URL to visit
-const url = 'https://github.com/tannuiscoding'; // Replace with your desired URL
+const url = 'https://github.com/yashksaini-coder'; // Replace with your desired URL
 
 (async function visitPage() {
     // Set up Chrome options for fast execution

@@ -1,12 +1,12 @@
-name: Visit Page Daily
+name: Visit GitHub Page
 
 on:
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
   schedule:
-    - cron: '0 0 * * *'  # Runs once daily at midnight UTC
-  workflow_dispatch:  # Allows manual triggering of the workflow
+    - cron: '0 * * * *' # Runs every hour; adjust as needed
 
 jobs:
-  visit_page_job:
+  visit-page:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,10 +16,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Ensure Node.js version is compatible
+          node-version: 'lts/*' # Installs the latest LTS version of Node.js
 
       - name: Install dependencies
-        run: npm install 
+        run: npm install selenium-webdriver
 
-      - name: Run the visit script
-        run: node scripts/visit.js  # Replace with the actual path if necessary
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Run Visit Script
+        run: |
+          node scripts/visit.js

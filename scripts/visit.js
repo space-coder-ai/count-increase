@@ -15,7 +15,7 @@ const url = 'https://github.com/yashksaini-coder';
     let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
 
     try {
-        for (let i = 0; i < 10; i++) { // Reduced visits to avoid excessive requests
+        for (let i = 0; i < 500; i++) { // Reduced visits to avoid excessive requests
             console.log(`Visit ${i + 1} to ${url}`);
             await driver.get(url);
         }

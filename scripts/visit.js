@@ -1,30 +1,25 @@
 const { Builder } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 
-// URL to visit
-const url = 'https://github.com/yashksaini-coder'; // Replace with your desired URL
+const url = 'https://github.com/yashksaini-coder';
 
 (async function visitPage() {
-    // Set up Chrome options for fast execution
     let options = new chrome.Options();
-    options.addArguments('--headless'); // Run in headless mode
+    options.addArguments('--headless');
     options.addArguments('--disable-infobars');
     options.addArguments('--disable-extensions');
     options.addArguments('--no-sandbox');
     options.addArguments('--disable-gpu');
     options.addArguments('--disable-dev-shm-usage');
 
-    // Initialize WebDriver
     let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
 
     try {
-        // Visit the URL 1000 times
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 10; i++) { // Reduced visits to avoid excessive requests
             console.log(`Visit ${i + 1} to ${url}`);
             await driver.get(url);
         }
     } finally {
-        // Close the browser after completion
         await driver.quit();
     }
 })();

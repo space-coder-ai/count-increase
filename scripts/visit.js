@@ -1,7 +1,7 @@
 const { Builder } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 
-const url = 'https://github.com/yashksaini-coder';
+const url = 'https://github.com/tannuiscoding';
 
 (async function visitPage() {
     let options = new chrome.Options();
